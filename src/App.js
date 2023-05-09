@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { GithubUser } from './GithubUser';
+import { SearchForm } from './SearchForm';
 
 function App() {
+  const [login, setLogin] = useState();
+
+  function handleLoginChange(input) {
+    setLogin(input);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <SearchForm value={login} setValue={handleLoginChange} />
+    <GithubUser login={login} />
+    </>
   );
 }
 
